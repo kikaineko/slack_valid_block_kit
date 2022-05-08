@@ -11,7 +11,7 @@ module SlackValidBlockKit
     raise "SlackValidBlockKit.build must return a Hash object." unless hash.is_a?(Hash)
 
     if validate.nil?
-      if SlackValidBlockKit::Config.skip_validation.nil? || SlackValidBlockKit::Config.skip_validation
+      if SlackValidBlockKit::Config.skip_validation.nil? || !SlackValidBlockKit::Config.skip_validation
         validate!(hash)
       end
     elsif validate
@@ -25,7 +25,7 @@ module SlackValidBlockKit
     raise "SlackValidBlockKit.blocks must return an Array object." unless blocks.is_a?(Array)
 
     if validate.nil?
-      if SlackValidBlockKit::Config.skip_validation.nil? || SlackValidBlockKit::Config.skip_validation
+      if SlackValidBlockKit::Config.skip_validation.nil? || !SlackValidBlockKit::Config.skip_validation
         validate_blocks!(blocks)
       end
     elsif validate
