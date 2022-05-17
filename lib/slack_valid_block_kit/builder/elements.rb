@@ -1,3 +1,5 @@
+require 'date'
+
 module SlackValidBlockKit
   module Builder
     module Elements
@@ -27,7 +29,15 @@ module SlackValidBlockKit
         hash = { type: 'datepicker' }
         hash[:action_id] = action_id
         hash[:placeholder] = placeholder unless placeholder.nil?
-        hash[:initial_date] = initial_date unless initial_date.nil?
+        unless initial_date.nil?
+          if initial_date.is_a?(Date)
+            hash[:initial_date] = initial_date.to_s
+          elsif initial_date.is_a?(Time)
+            hash[:initial_date] = initial_date.to_date.to_s
+          else
+            hash[:initial_date] = initial_date
+          end
+        end
         hash[:confirm] = confirm unless confirm.nil?
         hash[:focus_on_load] = focus_on_load unless focus_on_load.nil?
         hash
@@ -192,7 +202,13 @@ module SlackValidBlockKit
         hash = { type: 'timepicker' }
         hash[:action_id] = action_id
         hash[:placeholder] = placeholder unless placeholder.nil?
-        hash[:initial_time] = initial_time unless initial_time.nil?
+        unless initial_time.nil?
+          if initial_time.is_a?(Time)
+            hash[:initial_time] = initial_time.strftime("%H:%M")
+          else
+            hash[:initial_time] = initial_time
+          end
+        end
         hash[:confirm] = confirm unless confirm.nil?
         hash[:focus_on_load] = focus_on_load unless focus_on_load.nil?
         hash
