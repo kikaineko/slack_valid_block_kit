@@ -6,7 +6,7 @@ module SlackValidBlockKit
       def button(text:, action_id:, url: nil, value: nil, style: nil, confirm: nil, accessibility_label: nil)
         hash = { type: 'button' }
         hash[:text] = text
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:url] = url unless url.nil?
         hash[:value] = value unless value.nil?
         hash[:style] = style unless style.nil?
@@ -17,7 +17,7 @@ module SlackValidBlockKit
 
       def checkboxes(action_id:, options:, initial_options: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'checkboxes' }
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:options] = options
         hash[:initial_options] = initial_options unless initial_options.nil?
         hash[:confirm] = confirm unless confirm.nil?
@@ -27,7 +27,7 @@ module SlackValidBlockKit
 
       def datepicker(action_id:, placeholder: nil, initial_date: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'datepicker' }
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:placeholder] = placeholder unless placeholder.nil?
         unless initial_date.nil?
           if initial_date.is_a?(Date)
@@ -53,7 +53,7 @@ module SlackValidBlockKit
       def multi_static_select(placeholder:, action_id:, options:, option_groups: nil, initial_options: nil, confirm: nil, max_selected_items: nil, focus_on_load: nil)
         hash = { type: 'multi_static_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:options] = options
         hash[:option_groups] = option_groups unless option_groups.nil?
         hash[:initial_options] = initial_options unless initial_options.nil?
@@ -66,7 +66,7 @@ module SlackValidBlockKit
       def multi_external_select(placeholder:, action_id:, min_query_length: nil, initial_options: nil, confirm: nil, max_selected_items: nil, focus_on_load: nil)
         hash = { type: 'multi_external_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:min_query_length] = min_query_length unless min_query_length.nil?
         hash[:initial_options] = initial_options unless initial_options.nil?
         hash[:confirm] = confirm unless confirm.nil?
@@ -78,7 +78,7 @@ module SlackValidBlockKit
       def multi_users_select(placeholder:, action_id:, initial_users: nil, confirm: nil, max_selected_items: nil, focus_on_load: nil)
         hash = { type: 'multi_users_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_users] = initial_users unless initial_users.nil?
         hash[:confirm] = confirm unless confirm.nil?
         hash[:max_selected_items] = max_selected_items unless max_selected_items.nil?
@@ -89,7 +89,7 @@ module SlackValidBlockKit
       def multi_conversations_select(placeholder:, action_id:, initial_conversations: nil, default_to_current_conversation: nil, confirm: nil, max_selected_items: nil, filter: nil, focus_on_load: nil)
         hash = { type: 'multi_conversations_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_conversations] = initial_conversations unless initial_conversations.nil?
         hash[:default_to_current_conversation] = default_to_current_conversation unless default_to_current_conversation.nil?
         hash[:confirm] = confirm unless confirm.nil?
@@ -102,7 +102,7 @@ module SlackValidBlockKit
       def multi_channels_select(placeholder:, action_id:, initial_channels: nil, confirm: nil, max_selected_items: nil, focus_on_load: nil)
         hash = { type: 'multi_channels_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_channels] = initial_channels unless initial_channels.nil?
         hash[:confirm] = confirm unless confirm.nil?
         hash[:max_selected_items] = max_selected_items unless max_selected_items.nil?
@@ -113,14 +113,14 @@ module SlackValidBlockKit
       def overflow(options:, action_id:, confirm: nil)
         hash = { type: 'overflow' }
         hash[:options] = options
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:confirm] = confirm unless confirm.nil?
         hash
       end
 
       def plain_text_input(action_id:, placeholder: nil, initial_value: nil, multiline: nil, min_length: nil, max_length: nil, dispatch_action_config: nil, focus_on_load: nil)
         hash = { type: 'plain_text_input' }
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:placeholder] = placeholder unless placeholder.nil?
         hash[:initial_value] = initial_value unless initial_value.nil?
         hash[:multiline] = multiline unless multiline.nil?
@@ -134,7 +134,7 @@ module SlackValidBlockKit
       def radio_buttons(options:, action_id:, initial_option: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'radio_buttons' }
         hash[:options] = options
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_option] = initial_option unless initial_option.nil?
         hash[:confirm] = confirm unless confirm.nil?
         hash[:focus_on_load] = focus_on_load unless focus_on_load.nil?
@@ -144,7 +144,7 @@ module SlackValidBlockKit
       def static_select(placeholder:, action_id:, options:, option_groups: nil, initial_option: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'static_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:options] = options
         hash[:option_groups] = option_groups unless option_groups.nil?
         hash[:initial_option] = initial_option unless initial_option.nil?
@@ -156,7 +156,7 @@ module SlackValidBlockKit
       def external_select(placeholder:, action_id:, min_query_length: nil, initial_option: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'external_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:min_query_length] = min_query_length unless min_query_length.nil?
         hash[:initial_option] = initial_option unless initial_option.nil?
         hash[:confirm] = confirm unless confirm.nil?
@@ -167,7 +167,7 @@ module SlackValidBlockKit
       def users_select(placeholder:, action_id:, initial_user: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'users_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_user] = initial_user unless initial_user.nil?
         hash[:confirm] = confirm unless confirm.nil?
         hash[:focus_on_load] = focus_on_load unless focus_on_load.nil?
@@ -177,7 +177,7 @@ module SlackValidBlockKit
       def conversations_select(placeholder:, action_id:, initial_conversation: nil, default_to_current_conversation: nil, confirm: nil, response_url_enabled: nil, filter: nil, focus_on_load: nil)
         hash = { type: 'conversations_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_conversation] = initial_conversation unless initial_conversation.nil?
         hash[:default_to_current_conversation] = default_to_current_conversation unless default_to_current_conversation.nil?
         hash[:confirm] = confirm unless confirm.nil?
@@ -190,7 +190,7 @@ module SlackValidBlockKit
       def channels_select(placeholder:, action_id:, initial_channel: nil, confirm: nil, response_url_enabled: nil, focus_on_load: nil)
         hash = { type: 'channels_select' }
         hash[:placeholder] = placeholder
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:initial_channel] = initial_channel unless initial_channel.nil?
         hash[:confirm] = confirm unless confirm.nil?
         hash[:response_url_enabled] = response_url_enabled unless response_url_enabled.nil?
@@ -200,7 +200,7 @@ module SlackValidBlockKit
 
       def timepicker(action_id:, placeholder: nil, initial_time: nil, confirm: nil, focus_on_load: nil)
         hash = { type: 'timepicker' }
-        hash[:action_id] = action_id
+        hash[:action_id] = action_id.is_a?(Symbol) ? action_id.to_s : action_id
         hash[:placeholder] = placeholder unless placeholder.nil?
         unless initial_time.nil?
           if initial_time.is_a?(Time)
