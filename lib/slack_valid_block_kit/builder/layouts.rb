@@ -4,20 +4,20 @@ module SlackValidBlockKit
       def actions(elements:, block_id: nil)
         hash = { type: 'actions' }
         hash[:elements] = elements
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash
       end
 
       def context(elements:, block_id: nil)
         hash = { type: 'context' }
         hash[:elements] = elements
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash
       end
 
       def divider(block_id: nil)
         hash = { type: 'divider' }
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash
       end
 
@@ -25,14 +25,14 @@ module SlackValidBlockKit
         hash = { type: 'file' }
         hash[:elements] = elements
         hash[:source] = source
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash
       end
 
       def header(text:, block_id: nil)
         hash = { type: 'header' }
         hash[:text] = text
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash
       end
 
@@ -41,7 +41,7 @@ module SlackValidBlockKit
         hash[:image_url] = image_url
         hash[:alt_text] = alt_text
         hash[:title] = title unless title.nil?
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash
       end
 
@@ -50,7 +50,7 @@ module SlackValidBlockKit
         hash[:label] = label
         hash[:element] = element
         hash[:dispatch_action] = dispatch_action unless dispatch_action.nil?
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash[:hint] = hint unless hint.nil?
         hash[:optional] = optional unless optional.nil?
         hash
@@ -59,7 +59,7 @@ module SlackValidBlockKit
       def section(text: nil, block_id: nil, fields: nil, accessory: nil)
         hash = { type: 'section' }
         hash[:text] = text unless text.nil?
-        hash[:block_id] = block_id unless block_id.nil?
+        hash[:block_id] = block_id.is_a?(Symbol) ? block_id.to_s : block_id unless block_id.nil?
         hash[:fields] = fields unless fields.nil?
         hash[:accessory] = accessory unless accessory.nil?
         hash
