@@ -82,7 +82,7 @@ module SlackValidBlockKit::Validator
       validate_for(hash[:initial_value], "#{path}.initial_value", String, false)
       validate_for(hash[:multiline], "#{path}.multiline", :bool, false)
       validate_for(hash[:min_length], "#{path}.min_length", Integer, false, max: 3000)
-      validate_for(hash[:max_length], "#{path}.max_length", Integer, false)
+      validate_for(hash[:max_length], "#{path}.max_length", Integer, false, max: 3000)
 
       validate_for(hash[:dispatch_action_config], "#{path}.dispatch_action_config", Hash, false)
       validate_dispatch_action_config(hash[:dispatch_action_config], "#{path}.dispatch_action_config") unless hash[:dispatch_action_config].nil?
