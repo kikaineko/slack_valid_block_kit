@@ -44,7 +44,7 @@ module SlackValidBlockKit::Validator
       validate_for_plain_text(hash[:placeholder], "#{path}.placeholder", false, 150)
       validate_for(hash[:initial_date], "#{path}.initial_date", String, false)
 
-      if hash[:initial_date].is_a?(String) && !hash[:initial_date] =~ /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$/
+      if hash[:initial_date].is_a?(String) && !(hash[:initial_date] =~ /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$/)
         add_error("#{path}.initial_date", :invalid_format)
       end
 
@@ -110,7 +110,7 @@ module SlackValidBlockKit::Validator
 
       validate_for_plain_text(hash[:placeholder], "#{path}.placeholder", false, 150)
       validate_for(hash[:initial_time], "#{path}.initial_time", String, false)
-      if hash[:initial_time].is_a?(String) && !hash[:initial_time] =~ /^(0\d|1[0-2])-[0-5]\d$/
+      if hash[:initial_time].is_a?(String) && !(hash[:initial_time] =~ /^(0\d|1[0-2])-[0-5]\d$/)
         add_error("#{path}.initial_time", :invalid_format)
       end
 
